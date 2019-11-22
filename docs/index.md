@@ -12,6 +12,15 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
+## WaveNet Exploration
+
+### WaveNet Website: https://deepmind.com/blog/article/wavenet-generative-model-raw-audio
+### WaveNet Paper: https://arxiv.org/pdf/1609.03499.pdf
+### PixelCNN Website: https://deepmind.com/research/publications/pixel-recurrent-neural-networks
+### PixelCNN Paper: https://arxiv.org/abs/1601.06759
+### PixelRNN Website: https://deepmind.com/research/publications/conditional-image-generation-pixelcnn-decoders
+### PixelRNN Paper: https://arxiv.org/pdf/1606.05328.pdf
+
 # Header 1
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
