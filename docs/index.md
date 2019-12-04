@@ -69,7 +69,7 @@ For this we ran a script to automatically go through the music files, and if the
 
 ### Train the model
 
-To train the model, we ran the library for roughly # days using the following command:
+To train the model, we ran the library for roughly 4 days using the following command:
 > python3 train.py --data_dir=~/Data/ --gc_channels=32 --checkpoint_every=1 --batch_size=2 1&>2 results.txt
 
 Using anouther script to parse through the results.txt file, we were able to obtain the following statistics throughout the training process.
@@ -96,6 +96,59 @@ Using anouther script to parse through the results.txt file, we were able to obt
 ### Experiment Results
 #### Model Training Statistics
 #### Generated Samples
+##### Classical Music Generations
+###### Step 20
+[Classical Music Step 20](./../audiogen/classical_20.wav)
+###### Step 5020
+[Classical Music Step 5020](./../audiogen/classical_5020.wav)
+###### Step 10020
+[Classical Music Step 10020](./../audiogen/classical_10020.wav)
+###### Step 15000
+[Classical Music Step 15000](./../audiogen/classical_15000.wav)
+##### Hardcore Music Generations
+###### Step 20
+[Hardcore Music Step 20](./../audiogen/hardcore_20.wav)
+###### Step 5020
+[Hardcore Music Step 5020](./../audiogen/hardcore_5020.wav)
+###### Step 10020
+[Hardcore Music Step 10020](./../audiogen/hardcore_10020.wav)
+###### Step 15000
+[Hardcore Music Step 15000](./../audiogen/hardcore_15000.wav)
+##### Hip Music Generations
+###### Step 20
+[Hip Music Step 20](./../audiogen/hip_20.wav)
+###### Step 5020
+[Hip Music Step 5020](./../audiogen/hip_5020.wav)
+###### Step 10020
+[Hip Music Step 10020](./../audiogen/hip_10020.wav)
+###### Step 15000
+[Hip Music Step 15000](./../audiogen/hip_15000.wav)
+##### Metal Music Generations
+###### Step 20
+[Metal Music Step 20](./../audiogen/metal_20.wav)
+###### Step 5020
+[Metal Music Step 5020](./../audiogen/metal_5020.wav)
+###### Step 10020
+[Metal Music Step 10020](./../audiogen/metal_10020.wav)
+###### Step 15000
+[Metal Music Step 15000](./../audiogen/metal_15000.wav)
+##### Rock Music Generations
+###### Step 20
+[Rock Music Step 20](./../audiogen/rock_20.wav)
+###### Step 5020
+[Rock Music Step 5020](./../audiogen/rock_5020.wav)
+###### Step 10020
+[Rock Music Step 10020](./../audiogen/rock_10020.wav)
+###### Step 15000
+[Rock Music Step 15000](./../audiogen/rock_15000.wav)
+<a href="file://../../audiogen/rock_15000.wav">Play sound file</a>
+
+| Step-Checkpoint/Genre | Hardcore                                                             | Classical                                                          | Hip                                                      | Metal                                                        | Rock                                                       |
+|:---------------------:|----------------------------------------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------|
+| 20                    | [ Classical Music Step 20 ] ( ./../audiogen/classical_20.wav )       | [ Hardcore Music Step 20 ] ( ./../audiogen/hardcore_20.wav )       | [ Hip Music Step 20 ] ( ./../audiogen/hip_20.wav )       | [ Metal Music Step 20 ] ( ./../audiogen/metal_20.wav )       | [ Rock Music Step 20 ] ( ./../audiogen/rock_20.wav )       |
+| 5020                  | [ Classical Music Step 5020 ] ( ./../audiogen/classical_5020.wav )   | [ Hardcore Music Step 5020 ] ( ./../audiogen/hardcore_5020.wav )   | [ Hip Music Step 5020 ] ( ./../audiogen/hip_5020.wav )   | [ Metal Music Step 5020 ] ( ./../audiogen/metal_5020.wav )   | [ Rock Music Step 5020 ] ( ./../audiogen/rock_5020.wav )   |
+| 10020                 | [ Classical Music Step 10020 ] ( ./../audiogen/classical_10020.wav ) | [ Hardcore Music Step 10020 ] ( ./../audiogen/hardcore_10020.wav ) | [ Hip Music Step 10020 ] ( ./../audiogen/hip_10020.wav ) | [ Metal Music Step 10020 ] ( ./../audiogen/metal_10020.wav ) | [ Rock Music Step 10020 ] ( ./../audiogen/rock_10020.wav ) |
+| 15000                 | [ Classical Music Step 15000 ] ( ./../audiogen/classical_15000.wav ) | [ Hardcore Music Step 15000 ] ( ./../audiogen/hardcore_15000.wav ) | [ Hip Music Step 15000 ] ( ./../audiogen/hip_15000.wav ) | [ Metal Music Step 15000 ] ( ./../audiogen/metal_15000.wav ) | [ Rock Music Step 15000 ] ( ./../audiogen/rock_15000.wav ) |
 
 Basic Template sourced from: https://github.com/pages-themes/midnight
 
@@ -107,6 +160,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+
 
 # Header 1
 
