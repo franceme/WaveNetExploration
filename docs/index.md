@@ -70,21 +70,65 @@ For this we ran a script to automatically go through the music files, and if the
 ### Train the model
 
 To train the model, we ran the library for roughly 4 days using the following command:
-> python3 train.py --data_dir=~/Data/ --gc_channels=32 --checkpoint_every=1 --batch_size=2 1&>2 results.txt
+> python3 train.py --data_dir=.../Data/ --gc_channels=32 --checkpoint_every=1 --batch_size=2 1&>2 results.txt
 
-Using anouther script to parse through the results.txt file, we were able to obtain the following statistics throughout the training process.
+Using another script to parse through the results.txt file, we were able to obtain the following statistics throughout the training process.
+
+```python
+#captures step # - loss = #.###, (###.## sec/step)
+pattern = re.compile('step [0-9]+ - loss = [0-9]+.[0-9]*, \([0-9]+.[0-9]* sec\/step\)')
+
+#captures ##.#####
+numbah = re.compile(r'[0-9]+\.?[0-9]*')
+#...
+with open(file, 'r') as foil:
+    line, restartFlag = foil.readline(), False
+    while line:
+        isStep = pattern.match(line) != None and len(numbah.findall(line)) == 3
+        if isStep:
+            step, loss, speed = numbah.findall(line)
+            results[step] = {'loss':loss, 'speed':speed}
+            if restartFlag:
+                restartFlag = False
+                restart += [int(step)-1]
+        elif line.startswith(restartPattern):
+            restartFlag = True
+        line = foil.readline()
+```
+
+---
 
 > Loss vs. Step
 
 ![Speed Loss](imgs/LossStep.png)
 
+> As excluded from the Legend
+> > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
+> >
+> > Black Line: When the program stopped and auto restarted (restoring) itself
+
+---
+
 > Speed per Step
 
 ![Speed Loss](imgs/SpeedStep.png)
 
+> As excluded from the Legend
+> > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
+> >
+> > Black Line: When the program stopped and auto restarted (restoring) itself
+
 > As noted, there were several restart points where the training was migrated from machines to machine.
-> The command only changed to add the addition of the restore from
-> 
+> The following script was used to ensure the system would automatically restart after waiting 10 seconds.
+
+```bash
+#./../source/AutoRun.sh
+
+until python3 train.py --data_dir=.../Data --gc_channels=32 --checkpoint_every=10 --batch_size=2 --logdir=.../Output >> results.txt 2>&1; do
+	echo "Restarting the service at $(date)" >> results.txt
+	sleep 10
+done
+```
 
 ### Run the model
 
@@ -92,184 +136,93 @@ Using anouther script to parse through the results.txt file, we were able to obt
 
 ---
 
-### Original Experiment Results
 ### Experiment Results
-#### Model Training Statistics
-#### Generated Samples
-##### Classical Music Generations
-###### Step 20
-[Classical Music Step 20](./../audiogen/classical_20.wav)
-###### Step 5020
-[Classical Music Step 5020](./../audiogen/classical_5020.wav)
-###### Step 10020
-[Classical Music Step 10020](./../audiogen/classical_10020.wav)
-###### Step 15000
-[Classical Music Step 15000](./../audiogen/classical_15000.wav)
-##### Hardcore Music Generations
-###### Step 20
-[Hardcore Music Step 20](./../audiogen/hardcore_20.wav)
-###### Step 5020
-[Hardcore Music Step 5020](./../audiogen/hardcore_5020.wav)
-###### Step 10020
-[Hardcore Music Step 10020](./../audiogen/hardcore_10020.wav)
-###### Step 15000
-[Hardcore Music Step 15000](./../audiogen/hardcore_15000.wav)
-##### Hip Music Generations
-###### Step 20
-[Hip Music Step 20](./../audiogen/hip_20.wav)
-###### Step 5020
-[Hip Music Step 5020](./../audiogen/hip_5020.wav)
-###### Step 10020
-[Hip Music Step 10020](./../audiogen/hip_10020.wav)
-###### Step 15000
-[Hip Music Step 15000](./../audiogen/hip_15000.wav)
-##### Metal Music Generations
-###### Step 20
-[Metal Music Step 20](./../audiogen/metal_20.wav)
-###### Step 5020
-[Metal Music Step 5020](./../audiogen/metal_5020.wav)
-###### Step 10020
-[Metal Music Step 10020](./../audiogen/metal_10020.wav)
-###### Step 15000
-[Metal Music Step 15000](./../audiogen/metal_15000.wav)
-##### Rock Music Generations
-###### Step 20
-[Rock Music Step 20](./../audiogen/rock_20.wav)
-###### Step 5020
-[Rock Music Step 5020](./../audiogen/rock_5020.wav)
-###### Step 10020
-[Rock Music Step 10020](./../audiogen/rock_10020.wav)
-###### Step 15000
-[Rock Music Step 15000](./../audiogen/rock_15000.wav)
-<a href="file://../../audiogen/rock_15000.wav">Play sound file</a>
 
-| Step-Checkpoint/Genre | Hardcore                                                             | Classical                                                          | Hip                                                      | Metal                                                        | Rock                                                       |
-|:---------------------:|----------------------------------------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------|
-| 20                    | [ Classical Music Step 20 ] ( ./../audiogen/classical_20.wav )       | [ Hardcore Music Step 20 ] ( ./../audiogen/hardcore_20.wav )       | [ Hip Music Step 20 ] ( ./../audiogen/hip_20.wav )       | [ Metal Music Step 20 ] ( ./../audiogen/metal_20.wav )       | [ Rock Music Step 20 ] ( ./../audiogen/rock_20.wav )       |
-| 5020                  | [ Classical Music Step 5020 ] ( ./../audiogen/classical_5020.wav )   | [ Hardcore Music Step 5020 ] ( ./../audiogen/hardcore_5020.wav )   | [ Hip Music Step 5020 ] ( ./../audiogen/hip_5020.wav )   | [ Metal Music Step 5020 ] ( ./../audiogen/metal_5020.wav )   | [ Rock Music Step 5020 ] ( ./../audiogen/rock_5020.wav )   |
-| 10020                 | [ Classical Music Step 10020 ] ( ./../audiogen/classical_10020.wav ) | [ Hardcore Music Step 10020 ] ( ./../audiogen/hardcore_10020.wav ) | [ Hip Music Step 10020 ] ( ./../audiogen/hip_10020.wav ) | [ Metal Music Step 10020 ] ( ./../audiogen/metal_10020.wav ) | [ Rock Music Step 10020 ] ( ./../audiogen/rock_10020.wav ) |
-| 15000                 | [ Classical Music Step 15000 ] ( ./../audiogen/classical_15000.wav ) | [ Hardcore Music Step 15000 ] ( ./../audiogen/hardcore_15000.wav ) | [ Hip Music Step 15000 ] ( ./../audiogen/hip_15000.wav ) | [ Metal Music Step 15000 ] ( ./../audiogen/metal_15000.wav ) | [ Rock Music Step 15000 ] ( ./../audiogen/rock_15000.wav ) |
+Instead of attempting an exahaustive amount of audio files, out of the 15000 steps we used four (roughly divided) checkpoints.
+This would help to show the progression of the audio generation without given the timeframe for this assignment.
+
+#### Model Training Statistics
+
+To ensure each audio segement generation was isolated, the commands were first generated and then ran through a Makefile to ensure the order.
+
+> The python script generating the commands iterated through the step division (the four main checkpoints)
+> then used the following method to create the string
+
+```python
+#./../source/gen.py
+
+def cmd(num, sec=30):
+	cmdstart = time.time()
+
+	global walk_dir
+	for genre in range(5):
+		os.chdir('.../tensorflow-wavenet/')
+		rawString = 'python3 generate.py --samples ' \
+			+ str(16000 * sec) + ' --gc_channels=32 --gc_cardinality=5 --gc_id=' + str(genre) \
+			+ ' --wav_out_path '+str(out_dir)+'gen_genre-' + str(genre) + '_num-' + str(num) + '.wav ' \
+			+ str(walk_dir) + 'model.ckpt-' + str(num)
+		
+		print(rawString)
+    # This would print out a string command for hip (id=2) at step 20
+    # python3 generate.py --samples 480000 --gc_channels=32 \
+    # --gc_cardinality=5 --gc_id=2 --wav_out_path .../Generations/gen_genre-2_num-20.wav \
+    # .../Checkpoints/2019-11-24T04-32-56/model.ckpt-20 >> .../results_gen.txt 2>&1
+```
+Combining these results with a date echo (used for checkpoints) resulted in the following Makefile section
+
+```Makefile
+# ./../source/Makefile
+terribleScan:
+	echo $$(($$(date +%s%N)/1000000)) >> .../results_gen.txt
+	python3 generate.py --samples 480000 --gc_channels=32 --gc_cardinality=5 --gc_id=0 --wav_out_path .../Generations/gen_genre-0_num-20.wav .../Checkpoints/2019-11-24T04-32-56/model.ckpt-20 >> .../results_gen.txt 2>&1
+	$(($(date +%s%N)/1000000)) >> .../results_gen.txt
+.
+.
+.
+  python3 generate.py --samples 480000 --gc_channels=32 --gc_cardinality=5 --gc_id=4 --wav_out_path .../Generations/gen_genre-4_num-15000.wav .../Checkpoints/2019-11-24T04-32-56/model.ckpt-15000 >> .../results_gen.txt 2>&1
+	echo $$(($$(date +%s%N)/1000000)) >> .../results_gen.txt
+```
+
+---
+
+The checkpoints gave the following insight about how long the generation took.
+
+![Generation Time](imgs/GeneratingTime.png)
+
+From this we know the average time for generating each audio file took approximately 1909 seconds, or 32 minutes.
+
+#### Generated Samples
+
+Listed below is the table linking each audio generation according to it's genre and it's checkpoint number.
+
+| Step/Genre | Hardcore                                                                                                                                                                     | Classical                                                                                                                                                                     | Hip                                                                                                                                                                     | Metal                                                                                                                                                                     | Rock                                                                                                                                                                     |
+|:---------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 20                    | <audio controls>  <source src = "https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_20.wav"   type = "audio/wav" >  </audio >    | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_20.wav"   type="audio/wav">  </audio>    | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_20.wav"   type="audio/wav">  </audio>    | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_20.wav"   type="audio/wav">  </audio>    | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_20.wav"   type="audio/wav">  </audio>    |
+| 5020                  | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_5020.wav"   type="audio/wav">  </audio>  | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_5020.wav"   type="audio/wav">  </audio>  | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_5020.wav"   type="audio/wav">  </audio>  | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_5020.wav"   type="audio/wav">  </audio>  | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_5020.wav"   type="audio/wav">  </audio>  |
+| 10020                 | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_10020.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_10020.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_10020.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_10020.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_10020.wav"   type="audio/wav">  </audio> |
+| 15000                 | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_15000.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_15000.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_15000.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_15000.wav"   type="audio/wav">  </audio> | <audio  controls>  <source  src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_15000.wav"   type="audio/wav">  </audio> |
+
+#### Generated Samples Progression
+
+Given none of these samples are up to the quality as any of the individually trained songs, the steps show clear progression towards real music.
+
+Relatively comparing the audio samples from steps 20 to 15000, there are more song-like elements being introduced.
+There is still a lot of static, however there is more fluxuation and the base of song-like elements introduced.
+
+Ordering the genres from left to right in order of the amount of songs available also help to show the difference in generated music quality.
+The rock generated music appears to have a relatively higher quality than the hardcore music, which may be due to the 1338.9 % increase of data.
+
+
+## Conclusion
+
+Though we weren't able to generate music, through our process and relatively minimal training we were able to show progression towards actual music.
+
+## Libraries uses
+
+* WaveNet - For the model, the training, and the generation
+* Mutagen - to retrieve music meta information
+* pydub - to edit the music and transform it into wav files.
+
+---
 
 Basic Template sourced from: https://github.com/pages-themes/midnight
-
-
-Text can be **bold**, _italic_, or ~~strikethrough~~.
-
-[Link to another page](./another-page.html).
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-
-# Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
