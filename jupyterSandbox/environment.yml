@@ -1,6 +1,0 @@
-name: WaveNetExploration_DataHandling
-channels:
-  - conda-forge
-dependencies:
-  - numpy
-  - matplotlib
