@@ -13,7 +13,6 @@ sync:
 	nohup watch -n 20 "rsync -rvhpt .../2019-11-24T04-32-56 .../Checkpoints/" >/dev/null 2>&1 &
 	nohup watch -n 20 "cp results.txt .../Checkpoints/results.txt" >/dev/null 2>&1 &
 
-
 reset:
 	cp .../results_StepsTo*.txt results.txt
 

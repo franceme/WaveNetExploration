@@ -32,7 +32,7 @@ Other papers read through this project are listed below.
 
 ```python
 #Script to collect the songs
-#./../../source/ExtensionCounter.py
+#./../../source/musicHandler.py
 
 if ext == '.mp3' or ext == '.flac':
 	print(filename)
