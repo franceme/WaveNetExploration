@@ -106,7 +106,7 @@ For the data preperation, the team used various music samples that were trimmed 
 We choose the top 5 genres shared between us for the most amount of data.
 Shown below is the distribution of collected of music samples.
 
-![Data Distribution](imgs/DataDistribution.png)
+![Data Distribution](imgs/DataDistribution.svg)
 
 For the library used, we had to use strict wav files without any meta-data.
 For this we ran a script to automatically go through the music files, and if they had a genre and a year in their meta-data, we converted their first 30 seconds into a wav file format.
@@ -144,7 +144,7 @@ with open(file, 'r') as foil:
 
 > Loss vs. Step
 
-![Speed Loss](imgs/LossStep.png)
+![Speed Loss](imgs/LossStep.svg)
 
 > As excluded from the Legend
 > > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
@@ -155,12 +155,15 @@ with open(file, 'r') as foil:
 
 > Speed per Step
 
-![Speed Loss](imgs/SpeedStep.png)
+![Speed Loss](imgs/SpeedStep.svg)
 
 > As excluded from the Legend
 > > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
 > >
 > > Black Line: When the program stopped and auto restarted (restoring) itself
+
+
+### Run the model
 
 > As noted, there were several restart points where the training was migrated from machines to machine.
 > The following script was used to ensure the system would automatically restart after waiting 10 seconds.
@@ -173,8 +176,6 @@ until python3 train.py --data_dir=.../Data --gc_channels=32 --checkpoint_every=1
 	sleep 10
 done
 ```
-
-### Run the model
 
 ## Results
 
@@ -231,9 +232,10 @@ terribleScan:
 
 The checkpoints gave the following insight about how long the generation took.
 
-![Generation Time](imgs/GeneratingTime.png)
+![Generation Time](imgs/GeneratingTime.svg)
 
 From this we know the average time for generating each audio file took approximately 1909 seconds, or 32 minutes.
+The generation time for all audio samples took a total time of approximately 10 hours
 
 #### Generated Samples
 
@@ -257,6 +259,13 @@ There is still a lot of static, however there is more fluxuation and the base of
 Ordering the genres from left to right in order of the amount of songs available also help to show the difference in generated music quality.
 The rock generated music appears to have a relatively higher quality than the hardcore music, which may be due to the 1338.9 % increase of data.
 
+The rest of the data files (generated using checkpoints at 5020 and 100020) are located [here](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
+
+### Models Used for the samples
+
+We made sure to capture every 10th checkpoint during the training, however it was decided to load only the ones used for generating the [audio samples](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
+
+You can find the models uploaded in the [modelsUsed folder](https://github.com/franceme/WaveNetExploration/tree/master/modelsUsed).
 
 ## Conclusion
 
@@ -264,9 +273,9 @@ Though we weren't able to generate music, through our process and relatively min
 
 ## Libraries used
 
-* [WaveNet](https://github.com/ibab/tensorflow-wavenet) - For the model, the training, and the generation
-* [Mutagen](https://github.com/quodlibet/mutagen) - to retrieve music meta information
-* [Pydub](https://github.com/jiaaro/pydub) - to edit the music and transform it into wav files.
+* [WaveNet](https://github.com/ibab/tensorflow-wavenet) - Used for the model, the training, and the generation
+* [Mutagen](https://github.com/quodlibet/mutagen) - Used to retrieve music meta information from the file.
+* [Pydub](https://github.com/jiaaro/pydub) - Used to edit and manipulate the music to transform it into wav files.
 
 ---
 
