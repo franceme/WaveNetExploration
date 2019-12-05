@@ -61,7 +61,7 @@ if ext == '.mp3' or ext == '.flac':
 ## Procedure
 
 For this project, we used a similar pattern used for machine learning projects.
-1. Review and Research the paper
+1. Understanding Wavenet
 2. Understand or Implement the model
 3. Prepare and format the data
 4. Train the model
@@ -106,7 +106,7 @@ For the data preperation, the team used various music samples that were trimmed 
 We choose the top 5 genres shared between us for the most amount of data.
 Shown below is the distribution of collected of music samples.
 
-![Data Distribution](imgs/DataDistribution.svg)
+<object width="100%" type="image/svg+xml" data="imgs/DataDistribution.svg"></object>
 
 For the library used, we had to use strict wav files without any meta-data.
 For this we ran a script to automatically go through the music files, and if they had a genre and a year in their meta-data, we converted their first 30 seconds into a wav file format.
@@ -144,7 +144,7 @@ with open(file, 'r') as foil:
 
 > Loss vs. Step
 
-![Speed Loss](imgs/LossStep.svg)
+<object width="100%" type="image/svg+xml" data="imgs/LossStep.svg"></object>
 
 > As excluded from the Legend
 > > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
@@ -155,7 +155,7 @@ with open(file, 'r') as foil:
 
 > Speed per Step
 
-![Speed Loss](imgs/SpeedStep.svg)
+<object width="100%" type="image/svg+xml" data="imgs/SpeedStep.svg"></object>
 
 > As excluded from the Legend
 > > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
@@ -232,7 +232,8 @@ terribleScan:
 
 The checkpoints gave the following insight about how long the generation took.
 
-![Generation Time](imgs/GeneratingTime.svg)
+
+<object width="100%" type="image/svg+xml" data="imgs/GeneratingTime.svg"></object>
 
 From this we know the average time for generating each audio file took approximately 1909 seconds, or 32 minutes.
 The generation time for all audio samples took a total time of approximately 10 hours
@@ -276,7 +277,8 @@ Though we weren't able to generate music, through our process and relatively min
 * [WaveNet](https://github.com/ibab/tensorflow-wavenet) - Used for the model, the training, and the generation
 * [Mutagen](https://github.com/quodlibet/mutagen) - Used to retrieve music meta information from the file.
 * [Pydub](https://github.com/jiaaro/pydub) - Used to edit and manipulate the music to transform it into wav files.
+* [Matplotlib](https://matplotlib.org) - Used for all of the diagrams.
 
 ---
 
-Basic Template sourced from: https://github.com/pages-themes/midnight
+Basic Template sourced from: https://github.com/pages-themes/cayman
