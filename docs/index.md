@@ -23,6 +23,7 @@ Other papers read through this project are listed below.
 ## Data Caveats
 
 * All of the data was collected from the team members combined music.
+  * **None of the music used for the training can be hosted due to various TOC** (terms of condition).
 * This was collected based on the top genre songs available.
 	* The genres were retrieved via using the mutagen python library.
 		* If the genre and the year were not available from the song, they were not used.
@@ -58,6 +59,21 @@ if ext == '.mp3' or ext == '.flac':
 				output.export(os.path.join(out_dir,wavName), format='wav')
 
 ```
+
+## Environment Clarification
+* Two computers were used only out of necessity, the checkpoints were restored from each part.
+  1. The first computer (used for the steps 0 to 343 and 870 to 15000)
+     * Python3: 7.6.1
+     * Tensorflow: 1.14.0
+     * Tensorflow-GPU: 1.14.0
+     * Cores: 8
+     * Ram: 16
+  2. The second computer (used between the steps of 343 to 870)
+     * Python3: 7.8.0
+     * Tensorflow: 1.14.0
+     * Tensorflow-GPU: 1.14.0
+     * Cores: 6
+     * Ram: 16
 
 ## Procedure
 
@@ -127,18 +143,18 @@ pattern = re.compile('step [0-9]+ - loss = [0-9]+.[0-9]*, \([0-9]+.[0-9]* sec\/s
 numbah = re.compile(r'[0-9]+\.?[0-9]*')
 #...
 with open(file, 'r') as foil:
-		line, restartFlag = foil.readline(), False
-		while line:
-			isStep = pattern.match(line) != None and len(numbah.findall(line)) == 3
-			if isStep:
-				step, loss, speed = numbah.findall(line)
-				results[step] = {'loss':loss, 'speed':speed}
-				if restartFlag:
-					restartFlag = False
-					restart += [int(step)-1]
-				elif line.startswith(restartPattern):
-					restartFlag = True
-			line = foil.readline()
+	line, restartFlag = foil.readline(), False
+	while line:
+		isStep = pattern.match(line) != None and len(numbah.findall(line)) == 3
+		if isStep:
+			step, loss, speed = numbah.findall(line)
+			results[step] = {'loss':loss, 'speed':speed}
+			if restartFlag:
+				restartFlag = False
+				restart += [int(step)-1]
+			elif line.startswith(restartPattern):
+				restartFlag = True
+		line = foil.readline()
 ```
 
 ---
@@ -260,6 +276,8 @@ There is still a lot of static, however there is more fluxuation and the base of
 
 Ordering the genres from left to right in order of the amount of songs available also help to show the difference in generated music quality.
 The rock generated music appears to have a relatively higher quality than the hardcore music, which may be due to the 1338.9 % increase of data.
+Speculations as to why the audio quality is still very low could include reasons such as lack of training time, training computation, or the complexity of the audio samples.
+The audio samples that we used included various instruments (including but not limitied to: vocalists, drumset, guitars, base guitars and electronics) compared to the original sampling of only pianos samples from the Youtube data set.
 
 The rest of the data files (generated using checkpoints at 5020 and 100020) are located [here](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
 
@@ -272,6 +290,7 @@ You can find the models uploaded in the [modelsUsed folder](https://github.com/f
 ## Conclusion
 
 Though we weren't able to generate music, through our process and relatively minimal training we were able to show progression towards actual music.
+This supports the original WaveNet paper, since the progression we created with our relatively limited training time and data shows the progression of the WaveNet model.
 
 ## Libraries used
 
