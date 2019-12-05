@@ -130,8 +130,19 @@ For this we ran a script to automatically go through the music files, and if the
 
 ### Train the model
 
-To train the model, we ran the library for roughly 4 days using the following command:
-> python3 train.py --data_dir=.../Data/ --gc_channels=32 --checkpoint_every=1 --batch_size=2 1&>2 results.txt
+
+To train the model, we ran the library for roughly 4 days using the following Scriptfile:
+```bash
+#./../source/AutoRun.sh
+
+until python3 train.py --data_dir=.../Data --gc_channels=32 --checkpoint_every=10 --batch_size=2 --logdir=.../Checkpoints/2019-11-24T04-32-56 >> results.txt 2>&1; do
+	echo "Restarting the service at $(date)" >> results.txt
+	sleep 10
+done
+```
+> As noted, there were several restart points where the training was migrated from machines to machine.
+> The following script was used to ensure the system would automatically restart after waiting 10 seconds.
+
 
 Using another script to parse through the results.txt file, we were able to obtain the following statistics throughout the training process.
 
@@ -179,20 +190,6 @@ with open(file, 'r') as foil:
 > >
 > > Black Line: When the program stopped and auto restarted (restoring) itself
 
-
-### Run the model
-
-> As noted, there were several restart points where the training was migrated from machines to machine.
-> The following script was used to ensure the system would automatically restart after waiting 10 seconds.
-
-```bash
-#./../source/AutoRun.sh
-
-until python3 train.py --data_dir=.../Data --gc_channels=32 --checkpoint_every=10 --batch_size=2 --logdir=.../Output >> results.txt 2>&1; do
-	echo "Restarting the service at $(date)" >> results.txt
-	sleep 10
-done
-```
 
 ## Results
 
