@@ -23,7 +23,7 @@ Other papers read through this project are listed below.
 ## Data Caveats
 
 * All of the data was collected from the team members combined music.
-  * **None of the music used for the training can be hosted due to various TOC** (terms of condition).
+	* **None of the music used for the training can be hosted due to various Terms and Conditions**.
 * This was collected based on the top genre songs available.
 	* The genres were retrieved via using the mutagen python library.
 		* If the genre and the year were not available from the song, they were not used.
