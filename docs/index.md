@@ -10,6 +10,7 @@ This is an open-source class project for the [Advanced Machine Learning course](
 This project is intended for us (the developers) to reproduce a Machine Learning Paper's results in a new manner.
 
 You can find the binder containing the results here [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
+
 ---
 
 For our project we reproduce the paper [WaveNet](https://arxiv.org/pdf/1609.03499.pdf), with more resources listed below. The paper can also be found at the following website [here](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio).
