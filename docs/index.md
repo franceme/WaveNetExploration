@@ -28,8 +28,8 @@ Other papers read through this project are listed below.
 * This was collected based on the top genre songs available.
 	* The genres were retrieved via using the mutagen python library.
 		* If the genre and the year were not available from the song, they were not used.
-	* The sub genres were also moved up into their main genre
-		* ex. if the genre is metalcore, then the genre is metal
+	* The sub genres were also moved up into their main genre.
+		* ex. if the genre is metalcore, then the genre is metal.
 
 * Also, if the song was not at least 2 minutes in length it would not be included.
 
@@ -144,7 +144,6 @@ done
 > As noted, there were several restart points where the training was migrated from machines to machine.
 > The following script was used to ensure the system would automatically restart after waiting 10 seconds.
 
-
 Using another script to parse through the results.txt file, we were able to obtain the following statistics throughout the training process.
 
 ```python
@@ -175,10 +174,10 @@ with open(file, 'r') as foil:
 
 <object width="100%" type="image/svg+xml" data="imgs/LossStep.svg"></object>
 
-> As excluded from the Legend
-> > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
-> >
-> > Black Line: When the program stopped and auto restarted (restoring) itself
+Shown above is the loss (blue) of the model at each checkpoint.
+A trendline was also introduced to better visualize the overall training trend.
+
+Also shown are the manual and automatic restart points, respectively being showing switching computers and program restart points.
 
 ---
 
@@ -186,10 +185,10 @@ with open(file, 'r') as foil:
 
 <object width="100%" type="image/svg+xml" data="imgs/SpeedStep.svg"></object>
 
-> As excluded from the Legend
-> > Yellow Line: When the program had to be stopped and restarted (ie. Needed to restart for update)
-> >
-> > Black Line: When the program stopped and auto restarted (restoring) itself
+Shown above is the speed (blue) taken per checkpoint.
+A trendline was also introduced to better visualize the speed taken.
+
+Also shown are the manual and automatic restart points, respectively being showing switching computers and program restart points.
 
 
 ## Results
