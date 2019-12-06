@@ -120,7 +120,7 @@ To ensure we could spend most of the time for the project on training, we decide
 
 ### Prepare and format the data
 
-For the data preperation, the team used various music samples that were trimmed to fit a uniform format (2-minute wav files).
+For the data preperation, the team used various music samples that were trimmed to fit a uniform format (2-minute wav files) using the file [here](https://github.com/franceme/WaveNetExploration/blob/master/source/musicHandler.py).
 We choose the top 5 genres shared between us for the most amount of data.
 Shown below is the distribution of collected of music samples.
 
