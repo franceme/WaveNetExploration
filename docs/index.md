@@ -9,7 +9,7 @@ layout: default
 This is an open-source class project for the [Advanced Machine Learning course](http://courses.cs.vt.edu/cs5824/) under [Dr. Bert Huang](http://berthuang.com).
 This project is intended for us (the developers) to reproduce a Machine Learning Paper's results in a new manner.
 
-You can find the binder containing the results here at this [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
+You can find the binder containing the results here [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
 ---
 
 For our project we reproduce the paper [WaveNet](https://arxiv.org/pdf/1609.03499.pdf), with more resources listed below. The paper can also be found at the following website [here](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio).
@@ -258,11 +258,14 @@ Listed below is the table linking each audio generation according to it's genre 
 
 | Genre/Step | 20 | 15000 |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Hardcore | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_20.wav"     type  =  "audio/wav"   > | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_15000.wav"     type  =  "audio/wav"   > |
-| Classical | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_20.wav"     type="audio/wav">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_15000.wav"     type="audio/wav">    </audio> |
-| Hip | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_20.wav"     type="audio/wav">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_15000.wav"     type="audio/wav">    </audio> |
-| Metal | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_20.wav"     type="audio/wav">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_15000.wav"     type="audio/wav">    </audio> |
-| Rock | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_20.wav"     type="audio/wav">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_15000.wav"     type="audio/wav">    </audio> |
+| Hardcore | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_20.mp3"     type  =  "audio/mpeg"   > | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hardcore_15000.mp3"     type  =  "audio/mpeg"   > |
+| Classical | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/classical_15000.mp3"     type="audio/mpeg">    </audio> |
+| Hip | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/hip_15000.mp3"     type="audio/mpeg">    </audio> |
+| Metal | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_15000.mp3"     type="audio/mpeg">    </audio> |
+| Rock | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_15000.mp3"     type="audio/mpeg">    </audio> |
+
+> Please note that for more browser support, the original wav files were transformed into mp3 files.
+> The initial wav files are still in the same [location](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
 
 #### Generated Samples Progression
 

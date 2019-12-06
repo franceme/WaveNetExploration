@@ -9,4 +9,4 @@ This project is intended for us (the developers) to reproduce a Machine Learning
 Please see the site [here](https://franceme.github.io/WaveNetExploration).
 
 ### MyBinder
-You can find the binder containing the results here at this [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
+You can find the binder containing the results here [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
