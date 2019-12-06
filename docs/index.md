@@ -255,6 +255,7 @@ The generation time for all audio samples took a total time of approximately 10 
 #### Generated Samples
 
 Listed below is the table linking each audio generation according to it's genre and it's checkpoint number.
+Due to size limitations we chose to display the initial and final audio generation to showcase the progression of the audio generation.
 
 | Genre/Step | 20 | 15000 |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -264,7 +265,7 @@ Listed below is the table linking each audio generation according to it's genre 
 | Metal | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/metal_15000.mp3"     type="audio/mpeg">    </audio> |
 | Rock | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_20.mp3"     type="audio/mpeg">    </audio> | <audio controls> <source src="https://raw.githubusercontent.com/franceme/WaveNetExploration/master/audiogen/rock_15000.mp3"     type="audio/mpeg">    </audio> |
 
-> Please note that for more browser support, the original wav files were transformed into mp3 files.
+> Please note that for more browser support, the original output wav files were transformed into mp3 files.
 > The initial wav files are still in the same [location](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
 
 #### Generated Samples Progression
@@ -274,12 +275,12 @@ Given none of these samples are up to the quality as any of the individually tra
 Relatively comparing the audio samples from steps 20 to 15000, there are more song-like elements being introduced.
 There is still a lot of static, however there is more fluxuation and the base of song-like elements introduced.
 
-Ordering the genres from left to right in order of the amount of songs available also help to show the difference in generated music quality.
-The rock generated music appears to have a relatively higher quality than the hardcore music, which may be due to the 1338.9 % increase of data.
+Ordering the genres from top to bottem in order of the amount of songs available also help to show the difference in generated music quality (lower to higher data amount).
+The rock generated music appears to have a relatively higher quality than the hardcore music, which may be due to the increase of data for the particular genre.
 Speculations as to why the audio quality is still very low could include reasons such as lack of training time, training computation, or the complexity of the audio samples.
 The audio samples that we used included various instruments (including but not limitied to: vocalists, drumset, guitars, base guitars and electronics) compared to the original sampling of only pianos samples from the Youtube data set.
 
-The rest of the data files (generated using checkpoints at 5020 and 100020) are located [here](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
+The rest of the data files (including the checkpoints at 5020 and 100020) are located [here](https://github.com/franceme/WaveNetExploration/tree/master/audiogen).
 
 ### Models Used for the samples
 
