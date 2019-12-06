@@ -288,6 +288,7 @@ You can find the models uploaded in the [modelsUsed folder](https://github.com/f
 
 Though we weren't able to generate music, through our process and relatively minimal training we were able to show progression towards actual music.
 This supports the original WaveNet paper, since the progression we created with our relatively limited training time and data shows the progression of the WaveNet model.
+However our particular experiment shows a large degree of underfitting. It is likely that the complexity of the model needed to be increased to accommodate the complexity of the music we chose. It is also possible that with more data, or with more detailed and specific data labels ('rock' is a genre that has so much variety it may as well be labeled 'music'), we could train a more realistic generative model. It seems that simply increasing training time would not decrease the loss, as for a long period there were simply noisy fluctuations in the loss centered on a stable trendline, although with deep learning models it is possible that it would find some new gradient direction to optimize towards and leave its local minima after more training.
 
 ## Libraries used
 
