@@ -9,7 +9,7 @@ layout: default
 This is an open-source class project for the [Advanced Machine Learning course](http://courses.cs.vt.edu/cs5824/) under [Dr. Bert Huang](http://berthuang.com).
 This project is intended for us (the developers) to reproduce a Machine Learning Paper's results in a new manner.
 
-You can find the binder containing the results here [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
+You can find the binder (online jupyter notebook) containing the results here [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franceme/WaveNetExploration/master?filepath=jupyterSandbox%2FWaveNetExploration_DataHandling.ipynb).
 
 ---
 
