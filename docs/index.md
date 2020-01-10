@@ -102,7 +102,7 @@ Our project aims to recreate the successful generation of music by training a Wa
 ### Understanding the Model
 
 Fortunately for us, this model had already been created several times.
-To ensure we could spend most of the time for the project on training, we decided to use [ibab's](ttps://github.com/ibab/tensorflow-wavenet.git) implementation of the methodology.
+To ensure we could spend most of the time for the project on training, we decided to use [ibab's](ttps://github.com/ibab/tensorflow-wavenet) implementation of the methodology.
 
 > There were only two changes we implemented within the code, only to ensure project compatibility.
 > > At line 274 in train.py, we modified the following to ensure we could save more checkpoints.
